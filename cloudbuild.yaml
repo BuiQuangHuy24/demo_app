@@ -2,8 +2,7 @@ steps:
   - id: "build image"
     name: "gcr.io/cloud-builders/docker"
     entrypoint: 'bash'
-    args: ["-c", "docker build --build-arg MASTER_KEY=$$SECRET_KEY_BASE -t gcr.io/${PROJECT_ID}/${_SERVICE_NAME} . "]
-    dir: 'docker/web/'
+    args: ["-c", "docker build --build-arg MASTER_KEY=$$SECRET_KEY_BASE -t gcr.io/${PROJECT_ID}/${_SERVICE_NAME} docker/web/ "]
     secretEnv: ["SECRET_KEY_BASE"]
 
   - id: "push image"
