@@ -21,7 +21,7 @@ steps:
 
 substitutions:
   _RAILS_ENV: 'production'
-  _REGION: 'asia-southeast1'
+  _REGION: 'us-central1'
   _SERVICE_NAME: 'demo-app-service'
   _INSTANCE_NAME: 'demo-app'
 
