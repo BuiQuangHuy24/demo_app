@@ -1,7 +1,7 @@
 steps:
   - name: gcr.io/kaniko-project/executor:v1.6.0
     args:
-    - --dockerfile=/docker/web/Dockerfile
+    # - --dockerfile=/docker/web/Dockerfile
     - --build-arg=RAILS_ENV_ARG=${_RAILS_ENV}
     - --build-arg=SECRET_KEY_BASE=$$SECRET_KEY_BASE
     - --build-arg=DATABASE_USER=$$DATABASE_USER
