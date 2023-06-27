@@ -50,6 +50,7 @@ substitutions:
   _RAILS_ENV: 'production'
   _REGION: 'us-central1'
   _SERVICE_NAME: 'demo-app-service'
+  _GCR_IMAGE: 'gcr.io/${PROJECT_ID}/${REPO_NAME}/${_SERVICE_NAME}'
   _INSTANCE_NAME: 'demo-app'
   _CPU: '1'
   _MEMORY: '512Mi'
