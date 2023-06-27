@@ -10,10 +10,12 @@ services:
     platform: linux/x86_64
     stdin_open: true
     tty: true
-    build: ./docker/web
+    build:
+      context: ./docker/web
+      dockerfile: Dockerfile.dev
     command: sh /docker-entrypoint.sh
     ports:
-      - "3000:3000"
+      - "3000:8080"
     env_file:
       - .env
     environment:

@@ -19,7 +19,7 @@ rm -f tmp/pids/server.pid
 
 # Start services
 
-bundle exec rails server --port=3000 -b 0.0.0.0
+bundle exec rails server --port=8080 -b 0.0.0.0
 
 # Finally call command issued to the docker service
 exec "$@"
