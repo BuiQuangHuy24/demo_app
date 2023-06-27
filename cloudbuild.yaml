@@ -1,6 +1,7 @@
 steps:
   - name: gcr.io/kaniko-project/executor:v1.6.0
     args:
+    - --dockerfile=/docker/web/Dockerfile
     - --build-arg=RAILS_ENV_ARG=${_RAILS_ENV}
     - --build-arg=SECRET_KEY_BASE=$$SECRET_KEY_BASE
     - --build-arg=DATABASE_USER=$$DATABASE_USER
@@ -10,7 +11,8 @@ steps:
     - --build-arg=REGION=${_REGION}
     - --build-arg=GCP_PROJECT_ID=$PROJECT_ID
     - --destination=${_GCR_IMAGE}
-    - --dockerfile=/docker/web/Dockerfile
+    - --skip-tls-verify
+    - --insecure
     - --cache=true
     - --cache-ttl=36h
     secretEnv: ['SECRET_KEY_BASE', 'DATABASE_USER', 'DATABASE_NAME', 'DATABASE_PASSWORD']
