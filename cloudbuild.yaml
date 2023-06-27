@@ -1,7 +1,6 @@
 steps:
   - name: gcr.io/kaniko-project/executor:v1.6.0
     args:
-    # - --dockerfile=/docker/web/Dockerfile
     - --build-arg=RAILS_ENV_ARG=${_RAILS_ENV}
     - --build-arg=SECRET_KEY_BASE=$$SECRET_KEY_BASE
     - --build-arg=DATABASE_USER=$$DATABASE_USER
@@ -40,7 +39,7 @@ steps:
           '--set-secrets', 'SECRET_KEY_BASE=secret_key_base:latest',
           '--set-secrets', 'DATABASE_USER=database_name:latest',
           '--set-secrets', 'DATABASE_NAME=database_name:latest',
-          '--set-secrets', 'DATABASE_PASSWORD=database_password:latest',]
+          '--set-secrets', 'DATABASE_PASSWORD=database_password:latest']
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
