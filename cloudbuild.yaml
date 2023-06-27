@@ -11,6 +11,7 @@ steps:
     - --build-arg=REGION=${_REGION}
     - --build-arg=GCP_PROJECT_ID=$PROJECT_ID
     - --destination=${_GCR_IMAGE}
+    - --context=.
     - --insecure
     - --skip-tls-verify
     - --skip-tls-verify-pull
