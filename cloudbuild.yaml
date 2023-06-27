@@ -11,19 +11,20 @@ steps:
     - --build-arg=REGION=${_REGION}
     - --build-arg=GCP_PROJECT_ID=$PROJECT_ID
     - --destination=${_GCR_IMAGE}
-    - --skip-tls-verify
     - --insecure
+    - --skip-tls-verify
+    - --skip-tls-verify-pull
+    - --insecure-pull
     - --cache=true
     - --cache-ttl=36h
     secretEnv: ['SECRET_KEY_BASE', 'DATABASE_USER', 'DATABASE_NAME', 'DATABASE_PASSWORD']
+
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args: ['beta', 'run', 'deploy', '${_SERVICE_NAME}',
           '--image', '${_GCR_IMAGE}',
           '--add-cloudsql-instances', '${_CLOUD_SQL}',
           '--allow-unauthenticated',
-          '--vpc-connector', '${_VPC_CONNECTOR}',
-          '--vpc-egress', '${_VPC_EGRESS}',
           '--region', '${_REGION}',
           '--cpu', '${_CPU}',
           '--memory', '${_MEMORY}',
@@ -31,7 +32,6 @@ steps:
           '--max-instances', '${_MAX_INSTANCES}',
           '--platform', 'managed',
           '--timeout', '${_TIMEOUT}',
-          '--ingress', '${_INGRESS}',
           '--revision-suffix', '${_REVISION_SUFFIX}',
           '--set-env-vars', 'RAILS_ENV=${_RAILS_ENV}',
           '--set-env-vars', 'GCP_PROJECT_ID=$PROJECT_ID',
@@ -51,13 +51,13 @@ substitutions:
   _REGION: 'us-central1'
   _SERVICE_NAME: 'demo-app-service'
   _GCR_IMAGE: 'gcr.io/${PROJECT_ID}/${REPO_NAME}/${_SERVICE_NAME}'
-  _INSTANCE_NAME: 'demo-app'
   _CPU: '1'
   _MEMORY: '512Mi'
   _REVISION_SUFFIX: 'pr-${_PR_NUMBER}'
   _MIN_INSTANCES: '0'
   _MAX_INSTANCES: '10'
   _TIMEOUT: '300'
+  _CLOUD_SQL: '${PROJECT_ID}:asia-southeast1:demo-app-db'
 
 availableSecrets:
   secretManager:
