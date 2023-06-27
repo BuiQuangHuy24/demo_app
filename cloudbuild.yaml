@@ -31,13 +31,13 @@ steps:
           '--max-instances', '${_MAX_INSTANCES}',
           '--platform', 'managed',
           '--timeout', '${_TIMEOUT}',
-          '--revision-suffix', '${_REVISION_SUFFIX}',
+          # '--revision-suffix', '${_REVISION_SUFFIX}',
           '--set-env-vars', 'RAILS_ENV=${_RAILS_ENV}',
           '--set-env-vars', 'GCP_PROJECT_ID=$PROJECT_ID',
           '--set-env-vars', 'REGION=${_REGION}',
           '--set-env-vars', 'DB_SOCKET=/cloudsql/${_CLOUD_SQL}',
           '--set-secrets', 'SECRET_KEY_BASE=secret_key_base:latest',
-          '--set-secrets', 'DATABASE_USER=database_name:latest',
+          '--set-secrets', 'DATABASE_USER=database_user:latest',
           '--set-secrets', 'DATABASE_NAME=database_name:latest',
           '--set-secrets', 'DATABASE_PASSWORD=database_password:latest']
 
@@ -52,7 +52,7 @@ substitutions:
   _GCR_IMAGE: 'gcr.io/${PROJECT_ID}/${REPO_NAME}/${_SERVICE_NAME}'
   _CPU: '1'
   _MEMORY: '512Mi'
-  _REVISION_SUFFIX: 'pr-${_PR_NUMBER}'
+  # _REVISION_SUFFIX: 'pr-${_PR_NUMBER}'
   _MIN_INSTANCES: '0'
   _MAX_INSTANCES: '10'
   _TIMEOUT: '300'
