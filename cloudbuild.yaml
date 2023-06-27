@@ -46,9 +46,15 @@ steps:
 
 substitutions:
   _RAILS_ENV: 'production'
-  _REGION: 'us-central1'
+  _REGION: 'asia-northeast1'
   _SERVICE_NAME: 'demo-app-service'
   _INSTANCE_NAME: 'demo-app'
+  _CPU: '1'
+  _MEMORY: '512Mi'
+  _REVISION_SUFFIX: 'pr-${_PR_NUMBER}'
+  _MIN_INSTANCES: '0'
+  _MAX_INSTANCES: '10'
+  _TIMEOUT: '300'
 
 availableSecrets:
   secretManager:
