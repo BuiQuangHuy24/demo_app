@@ -35,8 +35,8 @@ ENV BUNDLE_PATH /$APP_ROOT/vendor/bundle
 ENV BUNDLE_BIN /$APP_ROOT/vendor/bundle/bin
 ENV PATH $BUNDLE_BIN:$BUNDLE_PATH/gems/bin:$PATH
 
-COPY ./docker-entrypoint.sh /
-COPY ./wait-for-it.sh /
+COPY --from=build ./docker-entrypoint.sh /
+COPY --from=build ./wait-for-it.sh /
 RUN chmod +x /docker-entrypoint.sh /wait-for-it.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
