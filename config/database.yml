@@ -17,7 +17,7 @@ default: &default
   username: <%= ENV['DATABASE_USER'] || 'root' %>
   password: <%= ENV['DATABASE_PASSWORD'] || '' %>
   socket: /tmp/mysql.sock
-  host: <%= ENV['DATABASE_HOST'] || 'localhost' %>
+  host: <%= ENV['DATABASE_HOST'] %>
   port: <%= ENV['DATABASE_PORT'] || '3306' %>
 
 development:
@@ -54,5 +54,4 @@ test:
 production:
   <<: *default
   database: <%= ENV['DATABASE_NAME'] %>
-  username: demo_app
-  password: <%= ENV["DEMO_APP_DATABASE_PASSWORD"] %>
+  socket: <%= ENV['DB_SOCKET'] %>
