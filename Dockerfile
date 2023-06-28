@@ -38,3 +38,7 @@ ENV PATH $BUNDLE_BIN:$BUNDLE_PATH/gems/bin:$PATH
 COPY ./docker/web/docker-entrypoint.sh /
 COPY ./docker/web/wait-for-it.sh /
 RUN chmod +x /docker-entrypoint.sh /wait-for-it.sh
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+CMD ["docker-entrypoint"]
