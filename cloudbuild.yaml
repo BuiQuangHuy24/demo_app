@@ -22,6 +22,7 @@ steps:
     entrypoint: gcloud
     args: ['beta', 'run', 'deploy', '${_SERVICE_NAME}',
           '--image', '${_GCR_IMAGE}',
+          '--port', '${_PORT}',
           '--add-cloudsql-instances', '${_CLOUD_SQL}',
           '--allow-unauthenticated',
           '--region', '${_REGION}',
@@ -55,6 +56,7 @@ substitutions:
   _MAX_INSTANCES: '10'
   _TIMEOUT: '300'
   _CLOUD_SQL: '${PROJECT_ID}:asia-southeast1:demo-app-db'
+  _PORT: '8080'
 
 availableSecrets:
   secretManager:
