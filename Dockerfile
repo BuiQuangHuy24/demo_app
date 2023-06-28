@@ -30,6 +30,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN mkdir -p $APP_ROOT
 WORKDIR $APP_ROOT
 
+COPY . /$APP_ROOT
+
 ENV GEM_HOME /$APP_ROOT/vendor/bundle
 ENV BUNDLE_PATH /$APP_ROOT/vendor/bundle
 ENV BUNDLE_BIN /$APP_ROOT/vendor/bundle/bin
