@@ -22,7 +22,6 @@ steps:
     entrypoint: gcloud
     args: ['beta', 'run', 'deploy', '${_SERVICE_NAME}',
           '--image', '${_GCR_IMAGE}',
-          '--port', '${_PORT}',
           '--add-cloudsql-instances', '${_CLOUD_SQL}',
           '--allow-unauthenticated',
           '--region', '${_REGION}',
