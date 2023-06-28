@@ -41,6 +41,7 @@ COPY ./docker/web/docker-entrypoint.sh /
 COPY ./docker/web/wait-for-it.sh /
 RUN chmod +x /docker-entrypoint.sh /wait-for-it.sh
 
-# ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 
-# CMD ["docker-entrypoint"]
+# Configure the main process to run when running the image
+CMD ["rails", "server", "-b", "0.0.0.0"]
